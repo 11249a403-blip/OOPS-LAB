@@ -27,4 +27,39 @@ int main() {
     cin >> size;
 
     // Dynamically allocate memory for an array of integers
-    int* dynamic_array = new int[siz]()_*
+    int* dynamic_array = new int[size];
+
+    // Read values into the array
+    cout << "Enter " << size << " integer values:" << endl;
+    for (int i = 0; i < size; i++) {
+        cin >> dynamic_array[i];
+    }
+
+    // Print the array elements
+    cout << "The elements of the dynamic array are: ";
+    for (int i = 0; i < size; i++) {
+        cout << dynamic_array[i] << " ";
+    }
+    cout << endl;
+
+    // Deallocate the entire array
+    delete[] dynamic_array;
+    dynamic_array = nullptr;
+
+    return 0;
+}
+
+/*
+--------------------------------------------
+SAMPLE OUTPUT:
+Enter the number of elements for the dynamic array: 5
+Enter 5 integer values:
+10 20 30 40 50
+The elements of the dynamic array are: 10 20 30 40 50
+--------------------------------------------
+RESULT:
+Thus, the program successfully demonstrates dynamic memory
+allocation and deallocation for an array using 'new' and 'delete[]'
+operators in C++.
+--------------------------------------------
+*/
