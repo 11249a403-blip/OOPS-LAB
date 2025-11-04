@@ -2,79 +2,52 @@
 --------------------------------------------
 Experiment No: 23
 AIM:
-To implement virtual base classes to avoid ambiguity in multiple inheritance.
+To implement signal (interrupt) handling in C++.
 --------------------------------------------
 THEORY:
-When a class is derived from two base classes that have a common ancestor,
-it creates ambiguity while accessing members of the top base class.
-Virtual base classes ensure that only one copy of the base class is inherited,
-solving the "diamond problem" in C++.
+Signal handling allows a program to catch asynchronous events or interrupts,
+such as Ctrl+C or termination requests. The signal() function in C++
+is used to define a handler that executes specific code when the signal occurs.
 --------------------------------------------
 ALGORITHM:
-1. Create a base class Person.
-2. Derive Student and Employee from Person using virtual inheritance.
-3. Derive Manager from both Student and Employee.
-4. Demonstrate access to common base class members.
+1. Include <csignal> and <iostream> headers.
+2. Define a signal handler function.
+3. Register the handler using signal().
+4. Use an infinite loop to simulate running process.
+5. Press Ctrl+C to trigger the interrupt.
 --------------------------------------------
 CODE:
 */
 
 #include <iostream>
+#include <csignal>
+#include <unistd.h>
 using namespace std;
 
-class Person {
-public:
-    string name;
-    void getName() {
-        cout << "Enter name: ";
-        cin >> name;
-    }
-};
-
-class Student : virtual public Person {
-public:
-    int marks;
-    void getMarks() {
-        cout << "Enter marks: ";
-        cin >> marks;
-    }
-};
-
-class Employee : virtual public Person {
-public:
-    int salary;
-    void getSalary() {
-        cout << "Enter salary: ";
-        cin >> salary;
-    }
-};
-
-class Manager : public Student, public Employee {
-public:
-    void display() {
-        cout << "Name: " << name << ", Marks: " << marks << ", Salary: " << salary << endl;
-    }
-};
+void signalHandler(int signum) {
+    cout << "\nInterrupt signal (" << signum << ") received.\n";
+    cout << "Exiting safely..." << endl;
+    exit(signum);
+}
 
 int main() {
-    Manager m;
-    m.getName();
-    m.getMarks();
-    m.getSalary();
-    m.display();
+    signal(SIGINT, signalHandler);
+    while (1) {
+        cout << "Running program... Press Ctrl+C to stop.\n";
+        sleep(2);
+    }
     return 0;
 }
 
 /*
 --------------------------------------------
 SAMPLE OUTPUT:
-Enter name: Bob
-Enter marks: 90
-Enter salary: 50000
-Name: Bob, Marks: 90, Salary: 50000
+Running program... Press Ctrl+C to stop.
+^C
+Interrupt signal (2) received.
+Exiting safely...
 --------------------------------------------
 RESULT:
-Thus, the concept of virtual base class was successfully
-implemented to avoid ambiguity in multiple inheritance.
+Thus, signal (interrupt) handling was successfully implemented in C++.
 --------------------------------------------
 */
