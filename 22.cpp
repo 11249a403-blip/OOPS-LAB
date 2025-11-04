@@ -2,65 +2,49 @@
 --------------------------------------------
 Experiment No: 22
 AIM:
-To overload the insertion (<<) and extraction (>>) operators in C++.
+To implement user defined namespace in C++.
 --------------------------------------------
 THEORY:
-Operator overloading allows redefining the meaning of operators 
-for user-defined types. The insertion (<<) operator is used for output, 
-and the extraction (>>) operator is used for input.
-By overloading these operators, objects can be read and displayed 
-in a natural, intuitive way.
+Namespaces in C++ are used to organize code into logical groups and 
+prevent name conflicts. A user-defined namespace allows the user 
+to declare identifiers (like variables, classes, functions) 
+that can be accessed using the scope resolution operator (::).
 --------------------------------------------
 ALGORITHM:
-1. Define a class with data members.
-2. Overload the extraction (>>) operator to input object data.
-3. Overload the insertion (<<) operator to display object data.
-4. Create an object and demonstrate both operations in main().
+1. Create a user-defined namespace.
+2. Define variables and functions inside the namespace.
+3. Access these elements using the scope resolution operator.
+4. Call the namespace functions in main().
 --------------------------------------------
 CODE:
 */
 
 #include <iostream>
-#include <string>
 using namespace std;
 
-class Student {
-    string name;
-    int age;
-public:
-    friend istream& operator>>(istream& in, Student& s);
-    friend ostream& operator<<(ostream& out, const Student& s);
-};
-
-istream& operator>>(istream& in, Student& s) {
-    cout << "Enter name: ";
-    in >> s.name;
-    cout << "Enter age: ";
-    in >> s.age;
-    return in;
-}
-
-ostream& operator<<(ostream& out, const Student& s) {
-    out << "Name: " << s.name << ", Age: " << s.age;
-    return out;
+namespace MathOperations {
+    int add(int a, int b) {
+        return a + b;
+    }
+    int multiply(int a, int b) {
+        return a * b;
+    }
 }
 
 int main() {
-    Student s1;
-    cin >> s1;
-    cout << s1 << endl;
+    cout << "Sum: " << MathOperations::add(10, 5) << endl;
+    cout << "Product: " << MathOperations::multiply(10, 5) << endl;
     return 0;
 }
 
 /*
 --------------------------------------------
 SAMPLE OUTPUT:
-Enter name: Alice
-Enter age: 20
-Name: Alice, Age: 20
+Sum: 15
+Product: 50
 --------------------------------------------
 RESULT:
-Thus, the insertion and extraction operators were successfully
-overloaded and implemented.
+Thus, a user-defined namespace was successfully created 
+and implemented in C++.
 --------------------------------------------
 */
