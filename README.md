@@ -55,3 +55,51 @@ All files are named according to their experiment number (e.g., `1.cpp`, `2.cpp`
 
 ## 📂 Folder Structure
 
+OOP-Lab/
+│
+├── 1.cpp
+├── 2.cpp
+├── 3.cpp
+├── ...
+├── 26.cpp
+└── README.md
+
+
+---
+
+## 🧩 Key Concepts Covered
+
+- **Object-Oriented Programming Principles**: Encapsulation, Abstraction, Inheritance, Polymorphism  
+- **Constructors & Destructors**
+- **Function and Operator Overloading**
+- **Friend Functions**
+- **Inheritance Types**
+- **Virtual and Pure Virtual Functions**
+- **Templates (Class & Function)**
+- **File and Exception Handling**
+- **STL and Namespace Usage**
+- **Basic C++ Graphics Programming**
+
+---
+
+## 🧑‍💻 How to Compile and Run
+
+### Using Command Line:
+```bash
+g++ <filename>.cpp -o output
+./output
+
+EXAMPLE:
+g++ 5.cpp -o exp5
+./exp5
+
+Using VS Code / Code::Blocks:
+
+Open the .cpp file.
+
+Press Run or Ctrl+F9 to execute.
+
+🏁 Result
+
+All 26 programs were successfully compiled, executed, and verified.
+The experiments effectively demonstrate the major principles and applications of Object-Oriented Programming in C++.
